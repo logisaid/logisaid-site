@@ -230,41 +230,34 @@
   .cats-title{ position:relative; z-index:1; font-family:"Cairo",sans-serif; font-weight:800; font-size:clamp(1.5rem,3vw,2rem); color:var(--ink); margin:2px 0 9px; }
   .cats-sub{ position:relative; z-index:1; color:var(--teal-soft); font-size:.96rem; max-width:56ch; margin-bottom:28px; }
   #homeCards{ position:relative; z-index:1; grid-template-columns:repeat(3,1fr) !important; gap:20px; }
-  .home-card{ position:relative; overflow:hidden; min-width:0; background:#FCFBF7; border:1px solid rgba(16,32,30,.06); border-radius:26px; padding:24px; min-height:214px; cursor:pointer; text-align:right; display:flex; flex-direction:column; justify-content:flex-start; box-shadow:0 12px 30px -24px rgba(16,32,30,.22); transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease; }
-  .home-card:hover{ transform:translateY(-5px); box-shadow:0 26px 54px -24px rgba(16,32,30,.3); }
-  .home-card::before{ content:""; position:absolute; inset:0; z-index:0; opacity:.7; }
-  .home-card.c1::before{ background:linear-gradient(140deg,#E9F8EF,transparent 68%); }
-  .home-card.c2::before{ background:linear-gradient(140deg,#E7F0FD,transparent 68%); }
-  .home-card.c3::before{ background:linear-gradient(140deg,#F3E9FC,transparent 68%); }
-  .home-card.c4::before{ background:linear-gradient(140deg,#EAE8FC,transparent 68%); }
-  .home-card.c5::before{ background:linear-gradient(140deg,#FDEEE3,transparent 68%); }
-  .home-card.c6::before{ background:linear-gradient(140deg,#E7F1FD,transparent 68%); }
-  .home-card.c7::before{ background:linear-gradient(140deg,#E7F8EF,transparent 68%); }
-  .home-card.c8::before{ background:linear-gradient(140deg,#FCE9F1,transparent 68%); }
-  .home-card.c9::before{ background:linear-gradient(140deg,#EEE8FC,transparent 68%); }
-  .home-card .hc-badge{ position:relative; z-index:1; width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 16px -10px rgba(16,32,30,.25); flex-shrink:0; }
+  .home-card{ position:relative; overflow:hidden; min-width:0; border:1px solid rgba(16,32,30,.05); border-radius:26px; padding:22px; min-height:190px; cursor:pointer; text-align:right; display:flex; flex-direction:row-reverse; align-items:center; gap:16px; box-shadow:0 12px 30px -24px rgba(16,32,30,.18); transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease; }
+  .home-card:hover{ transform:translateY(-5px); box-shadow:0 26px 54px -24px rgba(16,32,30,.28); }
+  .home-card.c1{ background:#EAF8EF; } .home-card.c2{ background:#EAF2FD; } .home-card.c3{ background:#F4EAFD; }
+  .home-card.c4{ background:#ECEAFD; } .home-card.c5{ background:#FDEFE4; } .home-card.c6{ background:#EAF3FD; }
+  .home-card.c7{ background:#E9F8F0; } .home-card.c8{ background:#FDEAF1; } .home-card.c9{ background:#F0ECFD; }
+  .home-card .hc-info{ position:relative; z-index:1; flex:1 1 auto; min-width:0; display:flex; flex-direction:column; align-items:flex-start; gap:9px; }
+  .home-card .hc-badge{ width:44px; height:44px; border-radius:14px; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 16px -10px rgba(16,32,30,.2); flex-shrink:0; }
   .home-card .hc-badge .icon{ width:21px; height:21px; }
-  .home-card.c1 .hc-badge{ background:#DFF3E6; } .home-card.c1 .hc-badge .icon{ color:#1F8F57; }
-  .home-card.c2 .hc-badge{ background:#E1EDFC; } .home-card.c2 .hc-badge .icon{ color:#2F63C7; }
-  .home-card.c3 .hc-badge{ background:#F1E5FC; } .home-card.c3 .hc-badge .icon{ color:#8B3FC9; }
-  .home-card.c4 .hc-badge{ background:#E6E4FC; } .home-card.c4 .hc-badge .icon{ color:#5A4FD1; }
-  .home-card.c5 .hc-badge{ background:#FCEADD; } .home-card.c5 .hc-badge .icon{ color:#C97A34; }
-  .home-card.c6 .hc-badge{ background:#E3F0FC; } .home-card.c6 .hc-badge .icon{ color:#2A72C4; }
-  .home-card.c7 .hc-badge{ background:#E2F6EC; } .home-card.c7 .hc-badge .icon{ color:#23946B; }
-  .home-card.c8 .hc-badge{ background:#FCE3EC; } .home-card.c8 .hc-badge .icon{ color:#C43D74; }
-  .home-card.c9 .hc-badge{ background:#ECE6FC; } .home-card.c9 .hc-badge .icon{ color:#7248BE; }
-  .home-card .hc-text{ position:relative; z-index:1; max-width:58%; margin-top:14px; }
-  .home-card .ht{ font-family:"Cairo",sans-serif; font-weight:800; color:var(--ink); font-size:1.06rem; line-height:1.35; }
-  .home-card .hd{ font-size:.8rem; color:var(--teal-soft); margin-top:5px; line-height:1.55; }
-  .home-card .hgo{ margin-top:14px; color:var(--ink); font-weight:700; font-size:.85rem; display:inline-flex; align-items:center; gap:5px; transition:color .3s ease; }
-  .home-card .hgo .icon{ width:14px; height:14px; transition:transform .3s ease; }
-  .home-card:hover .hgo{ color:var(--accent-blue-deep); }
-  .home-card:hover .hgo .icon{ transform:translateX(-4px); }
-  .home-card .hc-photo{ position:absolute; left:0; bottom:0; z-index:0; width:58%; height:80%; }
-  .home-card .hc-photo img{ width:100%; height:100%; object-fit:cover; display:block; -webkit-mask-image:linear-gradient(115deg,transparent 0%,rgba(0,0,0,.5) 16%,#000 34%); mask-image:linear-gradient(115deg,transparent 0%,rgba(0,0,0,.5) 16%,#000 34%); transition:transform .3s ease; }
-  .home-card:hover .hc-photo img{ transform:scale(1.045); }
-  @media (max-width:900px){ #homeCards{ grid-template-columns:repeat(2,1fr) !important; } .home-card{ min-height:196px; } }
-  @media (max-width:560px){ #homeCards{ grid-template-columns:1fr !important; gap:16px; } .home-card{ min-height:150px; padding:18px; } .home-card .hc-text{ max-width:56%; } .home-card .hc-photo{ width:52%; height:100%; } }
+  .home-card.c1 .hc-badge{ background:#DFF3E6; color:#1F8F57; } .home-card.c1 .hgo{ background:#1F8F57; }
+  .home-card.c2 .hc-badge{ background:#E1EDFC; color:#2F63C7; } .home-card.c2 .hgo{ background:#2F63C7; }
+  .home-card.c3 .hc-badge{ background:#F1E5FC; color:#8B3FC9; } .home-card.c3 .hgo{ background:#8B3FC9; }
+  .home-card.c4 .hc-badge{ background:#E6E4FC; color:#5A4FD1; } .home-card.c4 .hgo{ background:#5A4FD1; }
+  .home-card.c5 .hc-badge{ background:#FCEADD; color:#C97A34; } .home-card.c5 .hgo{ background:#C97A34; }
+  .home-card.c6 .hc-badge{ background:#E3F0FC; color:#2A72C4; } .home-card.c6 .hgo{ background:#2A72C4; }
+  .home-card.c7 .hc-badge{ background:#E2F6EC; color:#23946B; } .home-card.c7 .hgo{ background:#23946B; }
+  .home-card.c8 .hc-badge{ background:#FCE3EC; color:#C43D74; } .home-card.c8 .hgo{ background:#C43D74; }
+  .home-card.c9 .hc-badge{ background:#ECE6FC; color:#7248BE; } .home-card.c9 .hgo{ background:#7248BE; }
+  .home-card .ht{ font-family:"Cairo",sans-serif; font-weight:800; color:var(--ink); font-size:1.05rem; line-height:1.3; }
+  .home-card .hd{ font-size:.8rem; color:var(--teal-soft); line-height:1.5; }
+  .home-card .hgo{ margin-top:2px; color:#fff; font-weight:700; font-size:.8rem; padding:8px 16px; border-radius:999px; display:inline-flex; align-items:center; gap:6px; transition:transform .3s ease, filter .3s ease; }
+  .home-card .hgo .icon{ width:13px; height:13px; }
+  .home-card:hover .hgo{ filter:brightness(1.08); }
+  .home-card:hover .hgo .icon{ transform:translateX(-3px); }
+  .home-card .hc-photo{ position:relative; z-index:1; flex:0 0 40%; align-self:stretch; border-radius:18px; overflow:hidden; box-shadow:0 14px 30px -16px rgba(16,32,30,.25); }
+  .home-card .hc-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease; }
+  .home-card:hover .hc-photo img{ transform:scale(1.06); }
+  @media (max-width:900px){ #homeCards{ grid-template-columns:repeat(2,1fr) !important; } .home-card{ min-height:170px; } }
+  @media (max-width:560px){ #homeCards{ grid-template-columns:1fr !important; gap:14px; } .home-card{ min-height:130px; padding:16px; } .home-card .hc-photo{ flex-basis:36%; } .home-card .ht{ font-size:.96rem; } .home-card .hd{ display:none; } }
 
   /* HERO */
   .hero{ padding:8px 0 4px; position:relative; }
@@ -395,64 +388,6 @@
     grid-template-columns:repeat(3,minmax(0,1fr)) !important;
     gap:18px;
   }
-  .home-card{
-    min-height:238px;
-    padding:23px;
-    border-radius:28px;
-    background:rgba(255,255,255,.82);
-    border:1px solid rgba(23,33,31,.065);
-    box-shadow:0 16px 38px -29px rgba(16,42,39,.32);
-    isolation:isolate;
-    transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s ease,border-color .32s ease;
-  }
-  .home-card:hover{
-    transform:translateY(-7px);
-    box-shadow:0 30px 65px -29px rgba(16,42,39,.34);
-    border-color:rgba(91,134,216,.18);
-  }
-  .home-card::before{
-    opacity:.82;
-    transition:opacity .32s ease,transform .32s ease;
-  }
-  .home-card:hover::before{opacity:1;transform:scale(1.02)}
-  .home-card .hc-badge{
-    width:46px;height:46px;border-radius:15px;
-    border:1px solid rgba(255,255,255,.72);
-    box-shadow:0 10px 24px -16px rgba(16,42,39,.38);
-  }
-  .home-card .hc-text{
-    max-width:59%;
-    margin-top:15px;
-  }
-  .home-card .ht{
-    font-size:1.08rem;
-    letter-spacing:-.15px;
-  }
-  .home-card .hd{
-    font-size:.84rem;
-    line-height:1.65;
-    margin-top:6px;
-  }
-  .home-card .hgo{
-    margin-top:16px;
-    color:var(--accent-blue-deep);
-    font-size:.83rem;
-  }
-  .home-card .hc-photo{
-    width:57%;
-    height:88%;
-    left:-2%;
-    bottom:-1%;
-    pointer-events:none;
-  }
-  .home-card .hc-photo img{
-    object-fit:cover;
-    object-position:center;
-    -webkit-mask-image:linear-gradient(108deg,transparent 0%,rgba(0,0,0,.38) 15%,#000 38%);
-    mask-image:linear-gradient(108deg,transparent 0%,rgba(0,0,0,.38) 15%,#000 38%);
-    filter:saturate(.96) contrast(.98);
-  }
-  .home-card:hover .hc-photo img{transform:scale(1.055)}
   .home-card:focus-visible{
     outline:3px solid rgba(91,134,216,.55);
     outline-offset:3px;
@@ -492,25 +427,6 @@
     .tabs{top:61px}
     .hero{padding-top:8px}
     .cats-section{padding-top:36px}
-    #homeCards{grid-template-columns:1fr !important;gap:14px}
-    .home-card{
-      min-height:174px;
-      padding:19px;
-      border-radius:23px;
-    }
-    .home-card .hc-text{
-      max-width:62%;
-      margin-top:13px;
-    }
-    .home-card .hc-photo{
-      width:52%;
-      height:106%;
-      left:-2%;
-      bottom:-3%;
-    }
-    .home-card .ht{font-size:1rem}
-    .home-card .hd{font-size:.79rem}
-    .home-card .hgo{margin-top:11px}
     .fab-wa{width:56px;height:56px;right:16px;bottom:16px}
   }
 </style>
@@ -803,17 +719,17 @@ document.getElementById('heroPic').src = HOME_IMG.phones;
 
 const PEXELS_IMG = id => 'https://images.pexels.com/photos/'+id+'/pexels-photo-'+id+'.jpeg?auto=compress&cs=tinysrgb&w=480';
 document.getElementById('homeCards').innerHTML = [
-  /* نفس ترتيب وتصميم الصورة المرجعية: RTL = الهاتف يمين، الألعاب وسط، الحواسيب يسار */
+  /* نفس ترتيب وتصميم الصورة المرجعية: RTL = الهاتف يمين، الألعاب وسط، الحواسيب يسار (وبالمثل للصفين التاليين) */
   {cls:'c1',icon:'i-phone',img:HOME_IMG.phones,t:'الهواتف الذكية',d:'أحدث الهواتف بأفضل الأسعار',id:'phones'},
   {cls:'c3',icon:'i-gamepad',img:PEXELS_IMG(3945657),t:'الألعاب',d:'عِش تجربة لعب لا تُنسى',id:'games'},
   {cls:'c2',icon:'i-laptop',img:HOME_IMG.computers,t:'حواسيب',d:'أداء أعلى لمستقبل أفضل',id:'computers'},
-  {cls:'c4',icon:'i-watch',img:PEXELS_IMG(6493443),t:'درونات وساعات ذكية ونظارات',d:'اكتشف العالم من زاوية جديدة',id:'gadgets'},
-  {cls:'c5',icon:'i-plug',img:PEXELS_IMG(914915),t:'إكسسوارات الهواتف',d:'مستلزمات تحمي وتكمل تجربتك',id:'accessories'},
   {cls:'c6',icon:'i-mouse',img:PEXELS_IMG(9161032),t:'إكسسوارات الحاسوب',d:'مزيد من الراحة والإنتاجية',id:'pc-accessories'},
-  {cls:'c7',icon:'i-box',img:PEXELS_IMG(221179),t:'برامج وسوفتوير',d:'حلول رقمية لحياة أسهل',id:'software'},
+  {cls:'c5',icon:'i-plug',img:PEXELS_IMG(914915),t:'إكسسوارات الهواتف',d:'مستلزمات تحمي وتكمل تجربتك',id:'accessories'},
+  {cls:'c4',icon:'i-watch',img:PEXELS_IMG(6493443),t:'درونات وساعات ذكية ونظارات',d:'اكتشف العالم من زاوية جديدة',id:'gadgets'},
+  {cls:'c9',icon:'i-tool',img:PEXELS_IMG(6755075),t:'الخدمات التقنية',d:'صيانة، تركيب، ودعم احترافي',id:'services'},
   {cls:'c8',icon:'i-camera',img:PEXELS_IMG(33104381),t:'كاميرات المراقبة',d:'أمان كامل لبيتك ومكتبك',id:'cameras'},
-  {cls:'c9',icon:'i-tool',img:PEXELS_IMG(6755075),t:'الخدمات التقنية',d:'صيانة، تركيب، ودعم احترافي',id:'services'}
-].map(c=>'<button class="home-card '+c.cls+'" onclick="showTab(\''+c.id+'\')"><div class="hc-badge"><svg class="icon"><use href="#'+c.icon+'"></use></svg></div><div class="hc-text"><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">تصفح الآن <svg class="icon"><use href="#i-arrow-left"></use></svg></span></div><div class="hc-photo"><img src="'+c.img+'" alt="'+c.t+'" loading="lazy"></div></button>').join('');
+  {cls:'c7',icon:'i-box',img:PEXELS_IMG(221179),t:'برامج وسوفتوير',d:'حلول رقمية لحياة أسهل',id:'software'}
+].map(c=>'<button class="home-card '+c.cls+'" onclick="showTab(\''+c.id+'\')"><div class="hc-info"><div class="hc-badge"><svg class="icon"><use href="#'+c.icon+'"></use></svg></div><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">تصفح الآن <svg class="icon"><use href="#i-arrow-left"></use></svg></span></div><div class="hc-photo"><img src="'+c.img+'" alt="'+c.t+'" loading="lazy"></div></button>').join('');
 
 function catalog(list, gridId, searchId, chipsId, specsFn, emoji, catFilter){
   let brand="", q="";
