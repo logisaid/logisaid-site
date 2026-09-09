@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LogiSaid — Smart Choices. A Better You.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root {
+    --bg-main: #F3F5F9;
+    --card-bg: #FFFFFF;
+    --text-dark: #0F172A;
+    --text-gray: #64748B;
+    --blue-accent: #0967D2;
+    --radius-card: 20px;
+    --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 18px 35px rgba(0, 0, 0, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.5;
+    padding-bottom: 50px;
+  }
+
+  .container { max-width: 1200px; margin-inline: auto; padding-inline: 20px; }
+
+  /* Header */
+  header.top-header {
+    background: #FFFFFF;
+    padding: 16px 0;
+    border-bottom: 1px solid #E2E8F0;
+  }
+  .header-flex {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  }
+  .brand-logo {
+    display: flex; align-items: center; gap: 10px; text-decoration: none;
+  }
+  .brand-icon {
+    width: 40px; height: 40px; border-radius: 12px; background: var(--blue-accent);
+    display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.15rem;
+    box-shadow: 0 6px 14px rgba(9, 103, 210, 0.35);
+  }
+  .brand-text h1 { font-size: 1.4rem; font-weight: 900; color: #000; line-height: 1; }
+  .brand-text h1 span { color: var(--blue-accent); }
+  .brand-text p {
+    font-size: 0.6rem; font-weight: 700; color: var(--text-gray);
+    letter-spacing: 1.5px; margin-top: 2px;
+  }
+
+  .search-wrapper {
+    flex: 1; max-width: 480px; position: relative;
+  }
+  .search-wrapper input {
+    width: 100%; padding: 12px 44px 12px 18px; border-radius: 99px;
+    border: 1px solid #E2E8F0; background: #F8FAFC; font-family: inherit; font-size: 0.9rem; outline: none;
+  }
+  .search-wrapper input:focus { border-color: var(--blue-accent); background: #FFF; }
+  .search-wrapper i { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #94A3B8; }
+
+  .header-contacts { display: flex; align-items: center; gap: 26px; }
+  .header-contacts a {
+    text-decoration: none; color: #334155; display: flex; flex-direction: column; align-items: center;
+    gap: 4px; font-size: 0.72rem; font-weight: 700; position: relative;
+  }
+  .header-contacts i { font-size: 1.15rem; color: #475569; }
+  .cart-badge {
+    position: absolute; top: -6px; left: -10px; background: var(--blue-accent); color: #fff;
+    font-size: 0.62rem; font-weight: 800; width: 16px; height: 16px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Nav pills */
+  nav.category-nav { margin: 18px 0 35px 0; }
+  .nav-list {
+    display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
+    background: #FFF; padding: 6px; border-radius: 99px; box-shadow: var(--shadow-soft); width: fit-content; margin-inline: auto;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 7px;
+    padding: 9px 18px; border-radius: 99px; text-decoration: none; color: #475569; font-weight: 700; font-size: 0.85rem; transition: 0.2s;
+  }
+  .nav-item.active, .nav-item:hover { background: var(--text-dark); color: #FFF; }
+
+  /* Section Title */
+  .section-title { text-align: center; margin-bottom: 35px; }
+  .section-title h2 { font-size: 2rem; font-weight: 900; }
+  .section-title h2 span { color: var(--blue-accent); position: relative; }
+  .section-title h2 span::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 3px; background: var(--blue-accent); border-radius: 2px;
+  }
+  .section-title p { color: var(--text-gray); font-size: 0.95rem; margin-top: 10px; }
+
+  /* Grid */
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .card-item {
+    background: var(--card-bg);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-blue   { background: linear-gradient(135deg, #FFFFFF 40%, #EFF6FF 100%); }
+  .card-purple { background: linear-gradient(135deg, #FFFFFF 40%, #FAF5FF 100%); }
+  .card-green  { background: linear-gradient(135deg, #FFFFFF 40%, #F0FDF4 100%); }
+  .card-orange { background: linear-gradient(135deg, #FFFFFF 40%, #FFF7ED 100%); }
+  .card-rose   { background: linear-gradient(135deg, #FFFFFF 40%, #FFF1F2 100%); }
+
+  .card-content { max-width: 62%; z-index: 2; position: relative; }
+
+  .badge-icon {
+    width: 40px; height: 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.15rem; margin-bottom: 12px;
+  }
+  .badge-blue { background: #DBEAFE; color: #1D4ED8; }
+  .badge-purple { background: #F3E8FF; color: #7E22CE; }
+  .badge-green { background: #DCFCE7; color: #15803D; }
+  .badge-orange { background: #FFEDD5; color: #C2410C; }
+  .badge-rose { background: #FFE4E6; color: #E11D48; }
+
+  .card-title { font-size: 1.2rem; font-weight: 800; color: #0F172A; margin-bottom: 2px; }
+  .card-desc { font-size: 0.82rem; color: var(--text-gray); margin-bottom: 14px; }
+
+  .btn-action {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 15px; border-radius: 99px; text-decoration: none;
+    font-size: 0.8rem; font-weight: 700; transition: 0.2s; width: fit-content;
+  }
+  .btn-b { background: #EFF6FF; color: #2563EB; }
+  .btn-b:hover { background: #2563EB; color: #FFF; }
+  .btn-p { background: #FAF5FF; color: #9333EA; }
+  .btn-p:hover { background: #9333EA; color: #FFF; }
+  .btn-g { background: #F0FDF4; color: #16A34A; }
+  .btn-g:hover { background: #16A34A; color: #FFF; }
+  .btn-o { background: #FFF7ED; color: #EA580C; }
+  .btn-o:hover { background: #EA580C; color: #FFF; }
+  .btn-r { background: #FFF1F2; color: #E11D48; }
+  .btn-r:hover { background: #E11D48; color: #FFF; }
+
+  /* Decorative big icon */
+  .card-3d {
+    position: absolute; left: -10px; bottom: -14px; width: 130px; height: 130px;
+    z-index: 1; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; opacity: 0.9;
+  }
+  .card-3d i { font-size: 3.6rem; filter: drop-shadow(0px 6px 10px rgba(0,0,0,0.08)); }
+  .card-3d.b { background: radial-gradient(circle, #DBEAFE 0%, transparent 70%); color: #2563EB; }
+  .card-3d.p { background: radial-gradient(circle, #F3E8FF 0%, transparent 70%); color: #9333EA; }
+  .card-3d.g { background: radial-gradient(circle, #DCFCE7 0%, transparent 70%); color: #16A34A; }
+  .card-3d.o { background: radial-gradient(circle, #FFEDD5 0%, transparent 70%); color: #EA580C; }
+  .card-3d.r { background: radial-gradient(circle, #FFE4E6 0%, transparent 70%); color: #E11D48; }
+
+  /* Footer features */
+  .footer-features {
+    margin-top: 35px; background: #FFF; border-radius: var(--radius-card);
+    padding: 22px 26px; display: grid; grid-template-columns: repeat(4, 1fr) 1.4fr; gap: 20px; align-items: center;
+    box-shadow: var(--shadow-soft); border: 1px solid #F1F5F9;
+  }
+  .feat-box { display: flex; align-items: center; gap: 12px; }
+  .feat-icon {
+    width: 45px; height: 45px; border-radius: 12px; background: #F8FAFC;
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--blue-accent); flex-shrink: 0;
+  }
+  .feat-info h4 { font-size: 0.9rem; font-weight: 800; color: #0F172A; }
+  .feat-info p { font-size: 0.78rem; color: var(--text-gray); }
+  .footer-tagline {
+    text-align: left; font-size: 1rem; font-weight: 800; color: var(--blue-accent);
+    border-right: 2px solid #E2E8F0; padding-right: 20px;
+  }
+
+  @media (max-width: 992px) {
+    .grid-layout { grid-template-columns: repeat(2, 1fr); }
+    .footer-features { grid-template-columns: repeat(2, 1fr); }
+    .footer-tagline { grid-column: span 2; text-align: center; border-right: none; border-top: 1px solid #E2E8F0; padding: 12px 0 0; }
+  }
+  @media (max-width: 600px) {
+    .grid-layout { grid-template-columns: 1fr; }
+    .footer-features { grid-template-columns: 1fr; }
+    .footer-tagline { grid-column: span 1; }
+    .header-contacts { display: none; }
+    .search-wrapper { max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top-header">
+  <div class="container header-flex">
+    <a href="#" class="brand-logo">
+      <div class="brand-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+      <div class="brand-text">
+        <h1>Logi<span>Said</span></h1>
+        <p>SMART CHOICES. A BETTER YOU.</p>
+      </div>
+    </a>
+
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="ابحث عن منتج، علامة تجارية، أو فئة ...">
+    </div>
+
+    <div class="header-contacts">
+      <a href="https://wa.me/212687244464" target="_blank">
+        <i class="fa-solid fa-headset"></i> الدعم
+      </a>
+      <a href="#account">
+        <i class="fa-solid fa-user"></i> حسابي
+      </a>
+      <a href="#cart" style="position:relative;">
+        <span class="cart-badge">0</span>
+        <i class="fa-solid fa-cart-shopping"></i> سلة المشتريات
+      </a>
+    </div>
+  </div>
+</header>
+
+<nav class="category-nav container">
+  <div class="nav-list">
+    <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i> الرئيسية</a>
+    <a href="#categories" class="nav-item"><i class="fa-solid fa-table-cells"></i> التصنيفات</a>
+    <a href="#offers" class="nav-item"><i class="fa-solid fa-tag"></i> العروض</a>
+    <a href="#brands" class="nav-item"><i class="fa-solid fa-star"></i> العلامات التجارية</a>
+    <a href="#bestsellers" class="nav-item"><i class="fa-solid fa-fire"></i> الأكثر مبيعاً</a>
+    <a href="#new" class="nav-item"><i class="fa-solid fa-sparkles"></i> جديدنا</a>
+    <a href="#services" class="nav-item"><i class="fa-solid fa-gear"></i> الخدمات التقنية</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <div class="section-title">
+    <h2>تسوق حسب <span>الفئات</span></h2>
+    <p>كل ما تحتاجه في مكان واحد، بأفضل جودة وأحسن الأسعار</p>
+  </div>
+
+  <div class="grid-layout" id="categories">
+
+    <a href="https://wa.me/212687244464?text=استفسار%20عن%20الحواسيب" target="_blank" class="card-item card-blue">
+      <div class="card-content">
+        <div class="badge-icon badge-blue"><i class="fa-solid fa-laptop"></i></div>
+        <h3 class="card-title">حواسيب</h3>
+        <p class="card-desc">أداء أعلى لمستقبل أفضل</p>
+        <span class="btn-action btn-b">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d b"><i class="fa-solid fa-laptop"></i></div>
+    </a>
+
+    <a href="https://wa.me/212687244464?text=استفسار%20عن%20معدات%20الألعاب" target="_blank" class="card-item card-purple">
+      <div class="card-content">
+        <div class="badge-icon badge-purple"><i class="fa-solid fa-gamepad"></i></div>
+        <h3 class="card-title">الألعاب</h3>
+        <p class="card-desc">عيش تجربة لا تُنسى</p>
+        <span class="btn-action btn-p">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d p"><i class="fa-solid fa-gamepad"></i></div>
+    </a>
+
+    <a href="https://wa.me/212687244464?text=استفسار%20عن%20الهواتف" target="_blank" class="card-item card-green">
+      <div class="card-content">
+        <div class="badge-icon badge-green"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <h3 class="card-title">الهواتف الذكية</h3>
+        <p class="card-desc">أحدث الهواتف بأفضل الأسعار</p>
+        <span class="btn-action btn-g">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d g"><i class="fa-solid fa-mobile-screen-button"></i></div>
+    </a>
+
+    <a href="https://wa.me/212687244464?text=استفسار%20عن%20الدرونات%20والنظارات%20والساعات%20الذكية" target="_blank" class="card-item card-rose">
+      <div class="card-content">
+        <div class="badge-icon badge-purple"><i class="fa-solid fa-vr-cardboard"></i></div>
+        <h3 class="card-title">درونات ونظارات وساعات ذكية</h3>
+        <p class="card-desc">اكتشف العالم من زاوية جديدة</p>
+        <span class="btn-action btn-p">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d p"><i class="fa-solid fa-vr-cardboard"></i></div>
+    </a>
+
+    <a href="https://wa.me/212687244464?text=استفسار%20عن%20إكسسوارات%20الهواتف" target="_blank" class="card-item card-orange">
+      <div class="card-content">
+        <div class="badge-icon badge-orange"><i class="fa-solid fa-headphones"></i></div>
+        <h3 class="card-title">إكسسوارات الهواتف</h3>
+        <p class="card-desc">مستلزمات تحمي وتُكمل تجربتك</p>
+        <span class="btn-action btn-o">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d o"><i class="fa-solid fa-headphones"></i></div>
+    </a>
+
+    <a href="https://wa.me/212687244464?text=استفسار%20عن%20إكسسوارات%20الحاسوب" target="_blank" class="card-item card-blue">
+      <div class="card-content">
+        <div class="badge-icon badge-blue"><i class="fa-solid fa-keyboard"></i></div>
+        <h3 class="card-title">إكسسوارات الحاسوب</h3>
+        <p class="card-desc">مزيد من الراحة والإنتاجية</p>
+        <span class="btn-action btn-b">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d b"><i class="fa-solid fa-keyboard"></i></div>
+    </a>
+
+    <a href="https://wa.me/212687244464?text=استفسار%20عن%20برامج%20وسوفتوير" target="_blank" class="card-item card-green">
+      <div class="card-content">
+        <div class="badge-icon badge-green"><i class="fa-solid fa-compact-disc"></i></div>
+        <h3 class="card-title">برامج وسوفتوير</h3>
+        <p class="card-desc">حلول رقمية لحياة أسهل</p>
+        <span class="btn-action btn-g">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d g"><i class="fa-solid fa-compact-disc"></i></div>
+    </a>
+
+    <a href="https://wa.me/212687244464?text=استفسار%20عن%20كاميرات%20المراقبة" target="_blank" class="card-item card-rose">
+      <div class="card-content">
+        <div class="badge-icon badge-rose"><i class="fa-solid fa-video"></i></div>
+        <h3 class="card-title">كاميرات المراقبة</h3>
+        <p class="card-desc">أمان كامل لبيتك ومكتبك</p>
+        <span class="btn-action btn-r">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d r"><i class="fa-solid fa-video"></i></div>
+    </a>
+
+    <a href="https://wa.me/212687244464?text=بغيت%20خدمة%20تقنية" target="_blank" class="card-item card-blue" id="services">
+      <div class="card-content">
+        <div class="badge-icon badge-blue"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <h3 class="card-title">الخدمات التقنية</h3>
+        <p class="card-desc">صيانة، تركيب، ودعم احترافي</p>
+        <span class="btn-action btn-b">تصفح الآن <i class="fa-solid fa-arrow-left"></i></span>
+      </div>
+      <div class="card-3d b"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+    </a>
+
+  </div>
+
+  <div class="footer-features">
+    <div class="feat-box">
+      <div class="feat-icon"><i class="fa-solid fa-truck-fast"></i></div>
+      <div class="feat-info">
+        <h4>شحن سريع</h4>
+        <p>لجميع أنحاء المغرب</p>
+      </div>
+    </div>
+    <div class="feat-box">
+      <div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="feat-info">
+        <h4>دفع آمن</h4>
+        <p>حماية 100% لبياناتك</p>
+      </div>
+    </div>
+    <div class="feat-box">
+      <div class="feat-icon"><i class="fa-solid fa-box-open"></i></div>
+      <div class="feat-info">
+        <h4>إرجاع سهل</h4>
+        <p>خلال 7 أيام</p>
+      </div>
+    </div>
+    <div class="feat-box">
+      <div class="feat-icon"><i class="fa-solid fa-headset"></i></div>
+      <div class="feat-info">
+        <h4>دعم متواصل</h4>
+        <p>فريقنا دائماً في خدمتك</p>
+      </div>
+    </div>
+    <div class="footer-tagline">"اختيارات ذكية لحياة أفضل"</div>
+  </div>
+
+</main>
+
+</body>
+</html>
