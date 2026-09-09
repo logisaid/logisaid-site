@@ -291,7 +291,6 @@
     <nav class="menu" id="navMenu">
       <a href="#" data-tab="home" class="active" onclick="showTab('home');return false;">الرئيسية</a>
       <a href="#" data-tab="phones" onclick="showTab('phones');return false;">التيليفونات</a>
-      <a href="#" data-tab="computers" onclick="showTab('computers');return false;">حاجات أخرى</a>
       <a href="#" data-tab="services" onclick="showTab('services');return false;">الخدمات</a>
       <a href="#" data-tab="contact" onclick="showTab('contact');return false;">تواصل</a>
     </nav>
@@ -306,7 +305,12 @@
   <div class="tabs-in" id="tabsBar">
     <button class="tab active" data-tab="home"><svg class="icon"><use href="#i-home"></use></svg>الرئيسية</button>
     <button class="tab" data-tab="phones"><svg class="icon"><use href="#i-phone"></use></svg>التيليفونات</button>
-    <button class="tab" data-tab="computers"><svg class="icon"><use href="#i-box"></use></svg>حاجات أخرى</button>
+    <button class="tab" data-tab="computers"><svg class="icon"><use href="#i-laptop"></use></svg>حواسيب</button>
+    <button class="tab" data-tab="games"><svg class="icon"><use href="#i-gamepad"></use></svg>الألعاب</button>
+    <button class="tab" data-tab="gadgets"><svg class="icon"><use href="#i-watch"></use></svg>درونات و ساعات ذكية</button>
+    <button class="tab" data-tab="accessories"><svg class="icon"><use href="#i-plug"></use></svg>إكسسوارات الهواتف</button>
+    <button class="tab" data-tab="software"><svg class="icon"><use href="#i-grid"></use></svg>برامج وسوفتوير</button>
+    <button class="tab" data-tab="cameras"><svg class="icon"><use href="#i-camera"></use></svg>كاميرات المراقبة</button>
     <button class="tab" data-tab="services"><svg class="icon"><use href="#i-tool"></use></svg>الخدمات</button>
     <button class="tab" data-tab="contact"><svg class="icon"><use href="#i-pin"></use></svg>تواصل</button>
   </div>
@@ -370,12 +374,51 @@
   </section>
 
   <section class="panel" id="tab-computers">
-    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-box"></use></svg> حاجات أخرى</h2><p>أي حاجة كنبيعها كتبان هنا أوتوماتيكياً — حواسيب، إكسسوارات، ولا شي حاجة أخرى.</p></div>
+    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-laptop"></use></svg> حواسيب</h2><p>حواسيب محمولة ومكتبية، جديدة ومستعملة، مجرّبة قبل البيع.</p></div>
     <div class="toolbar">
-      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="pcSearch" placeholder="قلب على حاجة…" aria-label="بحث"></div>
-      <div class="chips" id="pcChips"></div>
+      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="search-computers" placeholder="قلب على حاسوب…" aria-label="بحث"></div>
     </div>
-    <div class="grid-p" id="pcGrid"></div>
+    <div class="grid-p" id="grid-computers"></div>
+  </section>
+
+  <section class="panel" id="tab-games">
+    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-gamepad"></use></svg> الألعاب</h2><p>ألعاب لأجهزة مختلفة، جديدة ومستعملة.</p></div>
+    <div class="toolbar">
+      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="search-games" placeholder="قلب على لعبة…" aria-label="بحث"></div>
+    </div>
+    <div class="grid-p" id="grid-games"></div>
+  </section>
+
+  <section class="panel" id="tab-gadgets">
+    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-watch"></use></svg> درونات ونظارات وساعات ذكية</h2><p>درونات بكاميرا، نظارات ذكية، وساعات ذكية.</p></div>
+    <div class="toolbar">
+      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="search-gadgets" placeholder="قلب على حاجة…" aria-label="بحث"></div>
+    </div>
+    <div class="grid-p" id="grid-gadgets"></div>
+  </section>
+
+  <section class="panel" id="tab-accessories">
+    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-plug"></use></svg> إكسسوارات الهواتف</h2><p>شواحن، سماعات، حمايات، كابلات، وأكثر.</p></div>
+    <div class="toolbar">
+      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="search-accessories" placeholder="قلب على إكسسوار…" aria-label="بحث"></div>
+    </div>
+    <div class="grid-p" id="grid-accessories"></div>
+  </section>
+
+  <section class="panel" id="tab-software">
+    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-grid"></use></svg> برامج وسوفتوير</h2><p>برامج وتطبيقات، مركّبة ومفعّلة.</p></div>
+    <div class="toolbar">
+      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="search-software" placeholder="قلب على برنامج…" aria-label="بحث"></div>
+    </div>
+    <div class="grid-p" id="grid-software"></div>
+  </section>
+
+  <section class="panel" id="tab-cameras">
+    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-camera"></use></svg> كاميرات المراقبة</h2><p>كاميرات وأنظمة مراقبة (DVR)، للبيت والمحل.</p></div>
+    <div class="toolbar">
+      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="search-cameras" placeholder="قلب على كاميرا…" aria-label="بحث"></div>
+    </div>
+    <div class="grid-p" id="grid-cameras"></div>
   </section>
 
   <section class="panel" id="tab-services">
@@ -476,28 +519,35 @@ document.getElementById('heroPic').src = HOME_IMG.phones;
 
 document.getElementById('homeCards').innerHTML = [
   {img:HOME_IMG.phones,t:'التيليفونات',d:'جديدة ومستعملة، مجرّبة',id:'phones'},
-  {img:HOME_IMG.computers,t:'حاجات أخرى',d:'أي حاجة كنبيعها',id:'computers'},
+  {img:HOME_IMG.computers,t:'حواسيب',d:'محمولة ومكتبية',id:'computers'},
+  {icon:'i-gamepad',t:'الألعاب',d:'لأجهزة مختلفة',id:'games'},
+  {icon:'i-watch',t:'درونات وساعات ذكية',d:'درونات، نظارات، ساعات',id:'gadgets'},
+  {icon:'i-plug',t:'إكسسوارات الهواتف',d:'شواحن، سماعات، حمايات',id:'accessories'},
+  {icon:'i-grid',t:'برامج وسوفتوير',d:'مركّبة ومفعّلة',id:'software'},
+  {icon:'i-camera',t:'كاميرات المراقبة',d:'أنظمة DVR للبيت والمحل',id:'cameras'},
   {img:HOME_IMG.services,t:'الخدمات',d:'إصلاح واسترجاع وأكثر',id:'services'}
-].map(c=>'<button class="home-card" onclick="showTab(\''+c.id+'\')"><div class="hpic"><img src="'+c.img+'" alt="'+c.t+'" loading="lazy"></div><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">اكتشف <svg class="icon"><use href="#i-arrow-left"></use></svg></span></button>').join('');
+].map(c=>'<button class="home-card" onclick="showTab(\''+c.id+'\')"><div class="hpic">'+(c.img?'<img src="'+c.img+'" alt="'+c.t+'" loading="lazy">':'<svg class="icon" style="width:44px;height:44px;color:var(--brass-deep)"><use href="#'+c.icon+'"></use></svg>')+'</div><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">اكتشف <svg class="icon"><use href="#i-arrow-left"></use></svg></span></button>').join('');
 
-function catalog(list, gridId, searchId, chipsId, specsFn, emoji){
+function catalog(list, gridId, searchId, chipsId, specsFn, emoji, catFilter){
   let brand="", q="";
-  const chips=document.getElementById(chipsId);
+  const chips=chipsId?document.getElementById(chipsId):null;
+  const scope=()=> catFilter ? list.filter(catFilter) : list;
   function renderChips(){
-    const brands=[...new Set(list.map(x=>x.brand).filter(Boolean))];
+    if(!chips) return;
+    const brands=[...new Set(scope().map(x=>x.brand).filter(Boolean))];
     if(brand && !brands.includes(brand)) brand="";
     chips.innerHTML = '<button class="chip'+(brand?'':' active')+'" data-b="">الكل</button>'+brands.map(b=>'<button class="chip'+(b===brand?' active':'')+'" data-b="'+b+'">'+b+'</button>').join('');
   }
-  chips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b)return; brand=b.dataset.b; chips.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c===b)); draw(); });
+  if(chips) chips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b)return; brand=b.dataset.b; chips.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c===b)); draw(); });
   document.getElementById(searchId).addEventListener('input',e=>{ q=e.target.value.trim().toLowerCase(); draw(); });
   function draw(){
     const grid=document.getElementById(gridId);
-    const f=list.filter(p=>{
+    const f=scope().filter(p=>{
       if(brand&&p.brand!==brand)return false;
       if(q){ const hay=Object.values(p).join(' ').toLowerCase(); if(!hay.includes(q))return false; }
       return true;
     });
-    if(!f.length){ grid.innerHTML='<div class="empty">'+(list.length?'ماكاين حتى نتيجة. جرّب تبدل البحث.':'ماكاين حتى حاجة دابا. رجع من بعد.')+'</div>'; return; }
+    if(!f.length){ grid.innerHTML='<div class="empty">'+(scope().length?'ماكاين حتى نتيجة. جرّب تبدل البحث.':'ماكاين حتى حاجة دابا. رجع من بعد.')+'</div>'; return; }
     grid.innerHTML=f.map(p=>{
       const idx=list.indexOf(p);
       const img=p.image?'<img src="'+p.image+'" alt="'+p.name+'" loading="lazy">':emoji;
@@ -509,7 +559,23 @@ function catalog(list, gridId, searchId, chipsId, specsFn, emoji){
   return { refresh(){ renderChips(); draw(); } };
 }
 const phoneCatalog = catalog(phones,'phoneGrid','phoneSearch','phoneChips',p=>[p.storage,p.ram&&p.ram+' RAM',p.color,p.battery&&'بطارية '+p.battery].filter(Boolean),'📱');
-const itemCatalog = catalog(computers,'pcGrid','pcSearch','pcChips',p=>[p.category].filter(Boolean),'🔌');
+
+/* "حاجات أخرى" مقسّمة لبطونات/فئات منفصلة (فحال aliexpress) — كلها كتاخد من نفس catalog_items،
+   وكتفلترو حسب حقل category اللي كتحطو فتطبيق Androsaid. القيمة ديال category خاصها تكون
+   مطابقة بالضبط لواحدة من هاد الأسماء باش الحاجة تبان فالبطونة الصحيحة. */
+const OTHER_CATS = [
+  {key:'computers',   label:'حواسيب',                         gridId:'grid-computers',   searchId:'search-computers',   emoji:'💻'},
+  {key:'games',       label:'الألعاب',                        gridId:'grid-games',       searchId:'search-games',       emoji:'🎮'},
+  {key:'gadgets',     label:'درونات ونظارات وساعات ذكية',      gridId:'grid-gadgets',     searchId:'search-gadgets',     emoji:'⌚'},
+  {key:'accessories', label:'إكسسوارات الهواتف',               gridId:'grid-accessories', searchId:'search-accessories', emoji:'🔌'},
+  {key:'software',    label:'برامج وسوفتوير',                  gridId:'grid-software',    searchId:'search-software',    emoji:'🧩'},
+  {key:'cameras',     label:'كاميرات المراقبة',                 gridId:'grid-cameras',     searchId:'search-cameras',     emoji:'📹'}
+];
+const catCatalogs = {};
+OTHER_CATS.forEach(c=>{
+  catCatalogs[c.key] = catalog(computers, c.gridId, c.searchId, null, ()=>[], c.emoji, p=>p.category===c.label);
+});
+function refreshOtherCats(){ Object.values(catCatalogs).forEach(c=>c.refresh()); }
 
 (function(){
   const cats=[]; services.forEach(s=>{ if(!cats.includes(s.cat))cats.push(s.cat); });
@@ -602,7 +668,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ modal.classList.r
     });
     computers.length = 0;
     Array.prototype.push.apply(computers, items);
-    if(typeof itemCatalog !== 'undefined') itemCatalog.refresh();
+    if(typeof refreshOtherCats !== 'undefined') refreshOtherCats();
   }, function(err){ console.error('catalog_items sync error', err); });
 })();
 </script>
