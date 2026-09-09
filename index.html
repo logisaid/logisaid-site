@@ -275,6 +275,7 @@
 <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
 <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 21c0-3.6 3-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="8.5" r="2.5"/><path d="M15.5 14.2c2.6.4 4.5 2.4 4.5 5.3"/></symbol>
 <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12l-1 4a5 5 0 0 1-10 0L6 8Z"/><path d="M12 16v6"/></symbol>
+<symbol id="i-mouse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="5"/><line x1="12" y1="3" x2="12" y2="9"/></symbol>
 <symbol id="i-watch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="3"/><path d="M9 7V4h6v3M9 17v3h6v-3"/><path d="M12 10.3v1.8l1.4.9"/></symbol>
 <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5"/></symbol>
 <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.6 2.6 21 11l-9.4 9.4a2 2 0 0 1-2.8 0L3 14.6a2 2 0 0 1 0-2.8L12.4 2.6z"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor" stroke="none"/></symbol>
@@ -309,6 +310,7 @@
     <button class="tab" data-tab="games"><svg class="icon"><use href="#i-gamepad"></use></svg>الألعاب</button>
     <button class="tab" data-tab="gadgets"><svg class="icon"><use href="#i-watch"></use></svg>درونات و ساعات ذكية</button>
     <button class="tab" data-tab="accessories"><svg class="icon"><use href="#i-plug"></use></svg>إكسسوارات الهواتف</button>
+    <button class="tab" data-tab="pc-accessories"><svg class="icon"><use href="#i-mouse"></use></svg>إكسسوارات الحاسوب</button>
     <button class="tab" data-tab="software"><svg class="icon"><use href="#i-grid"></use></svg>برامج وسوفتوير</button>
     <button class="tab" data-tab="cameras"><svg class="icon"><use href="#i-camera"></use></svg>كاميرات المراقبة</button>
     <button class="tab" data-tab="services"><svg class="icon"><use href="#i-tool"></use></svg>الخدمات</button>
@@ -403,6 +405,14 @@
       <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="search-accessories" placeholder="قلب على إكسسوار…" aria-label="بحث"></div>
     </div>
     <div class="grid-p" id="grid-accessories"></div>
+  </section>
+
+  <section class="panel" id="tab-pc-accessories">
+    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-mouse"></use></svg> إكسسوارات الحاسوب</h2><p>فأرة، كيبورد، حقيبة، سماعات، وأكثر.</p></div>
+    <div class="toolbar">
+      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="search-pc-accessories" placeholder="قلب على إكسسوار…" aria-label="بحث"></div>
+    </div>
+    <div class="grid-p" id="grid-pc-accessories"></div>
   </section>
 
   <section class="panel" id="tab-software">
@@ -523,6 +533,7 @@ document.getElementById('homeCards').innerHTML = [
   {icon:'i-gamepad',t:'الألعاب',d:'لأجهزة مختلفة',id:'games'},
   {icon:'i-watch',t:'درونات وساعات ذكية',d:'درونات، نظارات، ساعات',id:'gadgets'},
   {icon:'i-plug',t:'إكسسوارات الهواتف',d:'شواحن، سماعات، حمايات',id:'accessories'},
+  {icon:'i-mouse',t:'إكسسوارات الحاسوب',d:'فأرة، كيبورد، حقيبة',id:'pc-accessories'},
   {icon:'i-grid',t:'برامج وسوفتوير',d:'مركّبة ومفعّلة',id:'software'},
   {icon:'i-camera',t:'كاميرات المراقبة',d:'أنظمة DVR للبيت والمحل',id:'cameras'},
   {img:HOME_IMG.services,t:'الخدمات',d:'إصلاح واسترجاع وأكثر',id:'services'}
@@ -568,6 +579,7 @@ const OTHER_CATS = [
   {key:'games',       label:'الألعاب',                        gridId:'grid-games',       searchId:'search-games',       emoji:'🎮'},
   {key:'gadgets',     label:'درونات ونظارات وساعات ذكية',      gridId:'grid-gadgets',     searchId:'search-gadgets',     emoji:'⌚'},
   {key:'accessories', label:'إكسسوارات الهواتف',               gridId:'grid-accessories', searchId:'search-accessories', emoji:'🔌'},
+  {key:'pc-accessories', label:'إكسسوارات الحاسوب',            gridId:'grid-pc-accessories', searchId:'search-pc-accessories', emoji:'🖱️'},
   {key:'software',    label:'برامج وسوفتوير',                  gridId:'grid-software',    searchId:'search-software',    emoji:'🧩'},
   {key:'cameras',     label:'كاميرات المراقبة',                 gridId:'grid-cameras',     searchId:'search-cameras',     emoji:'📹'}
 ];
