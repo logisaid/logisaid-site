@@ -203,7 +203,7 @@
   <div class="tabs-in" id="tabsBar">
     <button class="tab active" data-tab="home"><span class="em">🏠</span>الرئيسية</button>
     <button class="tab" data-tab="phones"><span class="em">📱</span>التيليفونات</button>
-    <button class="tab" data-tab="computers"><span class="em">💻</span>الحواسيب</button>
+    <button class="tab" data-tab="computers"><span class="em">🔌</span>حاجات أخرى</button>
     <button class="tab" data-tab="services"><span class="em">🛠️</span>الخدمات</button>
     <button class="tab" data-tab="contact"><span class="em">📍</span>تواصل</button>
   </div>
@@ -237,9 +237,9 @@
   </section>
 
   <section class="panel" id="tab-computers">
-    <div class="panel-head"><h2><span style="font-size:1.4rem">💻</span> الحواسيب</h2><p>محمولة ومكتبية، جديدة ومستعملة، مجرّبة قبل البيع.</p></div>
+    <div class="panel-head"><h2><span style="font-size:1.4rem">🔌</span> حاجات أخرى</h2><p>إكسسوارات، قطع غيار، وحاجات متنوعة كتتزاد أوتوماتيكياً.</p></div>
     <div class="toolbar">
-      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="pcSearch" placeholder="قلب على حاسوب…" aria-label="بحث"></div>
+      <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="pcSearch" placeholder="قلب على حاجة…" aria-label="بحث"></div>
       <div class="chips" id="pcChips"></div>
     </div>
     <div class="grid-p" id="pcGrid"></div>
@@ -288,18 +288,11 @@ const HOME_IMG = {phones:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wB
 const WHATSAPP = "212687244464";
 const wa = t => "https://wa.me/" + WHATSAPP + (t ? "?text=" + encodeURIComponent(t) : "");
 
-const phones = [
-  { name:"iPhone 13", brand:"Apple", condition:"مستعمل", price:5200, storage:"128GB", ram:"4GB", battery:"89%", color:"أزرق", warranty:"ضمان شهر", available:true, image:"", features:["مجرّب بالكامل","بطارية صحية"], accessories:["شاحن","كابل"] },
-  { name:"Samsung Galaxy S23", brand:"Samsung", condition:"جديد", price:7800, storage:"256GB", ram:"8GB", battery:"", color:"أسود", warranty:"ضمان سنة", available:true, image:"", features:["جديد فالصندوق"], accessories:["شاحن","صندوق أصلي"] },
-  { name:"Xiaomi Redmi Note 12", brand:"Xiaomi", condition:"جديد", price:2100, storage:"128GB", ram:"6GB", battery:"", color:"أزرق", warranty:"ضمان 6 أشهر", available:true, image:"", features:["جديد"], accessories:["شاحن سريع"] },
-  { name:"Oppo Reno 8", brand:"Oppo", condition:"مستعمل", price:2900, storage:"256GB", ram:"8GB", battery:"", color:"ذهبي", warranty:"ضمان شهر", available:true, image:"", features:["مجرّب"], accessories:["شاحن"] }
-];
+// هاد الجدولين كيتعمرو أوتوماتيكياً من Firebase (شوف السكريبت فآخر الصفحة) —
+// كل هاتف/حاجة كيضيفها سعيد فتطبيق Androsaid وكيحط ثمن العرض، كيبان هنا مباشرة.
+let phones = [];
 
-const computers = [
-  { name:"HP ProBook", brand:"HP", condition:"مستعمل", price:4200, cpu:"i5", ram:"8GB", disk:"256GB SSD", screen:'15.6"', color:"رمادي", warranty:"ضمان شهر", available:true, image:"", features:["مجرّب","بطارية زوينة"], accessories:["شاحن أصلي"] },
-  { name:"Dell Latitude", brand:"Dell", condition:"مستعمل", price:3800, cpu:"i5", ram:"8GB", disk:"256GB SSD", screen:'14"', color:"أسود", warranty:"ضمان شهر", available:true, image:"", features:["خفيف","مجرّب"], accessories:["شاحن"] },
-  { name:"Lenovo IdeaPad", brand:"Lenovo", condition:"جديد", price:5500, cpu:"i7", ram:"16GB", disk:"512GB SSD", screen:'15.6"', color:"فضي", warranty:"ضمان سنة", available:true, image:"", features:["جديد"], accessories:["شاحن","صندوق أصلي"] }
-];
+let computers = [];
 
 const services = [
   { cat:"إصلاح وصيانة", em:"📱", t:"إصلاح الهواتف", d:"شاشة، بطارية، شحن، ماء…" },
@@ -329,15 +322,18 @@ document.getElementById('tabsBar').addEventListener('click', e=>{ const b=e.targ
 
 document.getElementById('homeCards').innerHTML = [
   {img:HOME_IMG.phones,t:'التيليفونات',d:'جديدة ومستعملة، مجرّبة',id:'phones'},
-  {img:HOME_IMG.computers,t:'الحواسيب',d:'محمولة ومكتبية',id:'computers'},
+  {img:HOME_IMG.computers,t:'حاجات أخرى',d:'إكسسوارات ومتنوعات',id:'computers'},
   {img:HOME_IMG.services,t:'الخدمات',d:'إصلاح واسترجاع وأكثر',id:'services'}
 ].map(c=>'<button class="home-card" onclick="showTab(\''+c.id+'\')"><div class="hpic"><img src="'+c.img+'" alt="'+c.t+'" loading="lazy"></div><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">دخل ←</span></button>').join('');
 
 function catalog(list, gridId, searchId, chipsId, specsFn, emoji){
   let brand="", q="";
-  const brands=[...new Set(list.map(x=>x.brand).filter(Boolean))];
   const chips=document.getElementById(chipsId);
-  chips.innerHTML = '<button class="chip active" data-b="">الكل</button>'+brands.map(b=>'<button class="chip" data-b="'+b+'">'+b+'</button>').join('');
+  function renderChips(){
+    const brands=[...new Set(list.map(x=>x.brand).filter(Boolean))];
+    if(brand && !brands.includes(brand)) brand="";
+    chips.innerHTML = '<button class="chip'+(brand?'':' active')+'" data-b="">الكل</button>'+brands.map(b=>'<button class="chip'+(b===brand?' active':'')+'" data-b="'+b+'">'+b+'</button>').join('');
+  }
   chips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b)return; brand=b.dataset.b; chips.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c===b)); draw(); });
   document.getElementById(searchId).addEventListener('input',e=>{ q=e.target.value.trim().toLowerCase(); draw(); });
   function draw(){
@@ -347,17 +343,19 @@ function catalog(list, gridId, searchId, chipsId, specsFn, emoji){
       if(q){ const hay=Object.values(p).join(' ').toLowerCase(); if(!hay.includes(q))return false; }
       return true;
     });
-    if(!f.length){ grid.innerHTML='<div class="empty">ماكاين حتى نتيجة. جرّب تبدل البحث.</div>'; return; }
+    if(!f.length){ grid.innerHTML='<div class="empty">'+(list.length?'ماكاين حتى نتيجة. جرّب تبدل البحث.':'ماكاين حتى حاجة دابا. رجع من بعد.')+'</div>'; return; }
     grid.innerHTML=f.map(p=>{
       const idx=list.indexOf(p);
       const img=p.image?'<img src="'+p.image+'" alt="'+p.name+'" loading="lazy">':emoji;
-      return '<article class="pc"><div class="img"><span class="tag">'+p.condition+'</span>'+(p.available?'':'<span class="out">مبيوع</span>')+img+'</div><div class="b"><h3>'+p.name+'</h3><div class="sp">'+specsFn(p).map(s=>'<span>'+s+'</span>').join('')+'</div><div class="pr">'+p.price.toLocaleString('fr-MA')+' <small>درهم</small></div><div class="act"><a class="wa" href="'+wa('سلام، مهتم بـ '+p.name+' — واش متوفر؟')+'" target="_blank" rel="noopener">واتساب</a><button class="det" data-cat="'+gridId+'" data-i="'+idx+'">تفاصيل</button></div></div></article>';
+      return '<article class="pc"><div class="img">'+(p.condition?'<span class="tag">'+p.condition+'</span>':'')+(p.available===false?'<span class="out">مبيوع</span>':'')+img+'</div><div class="b"><h3>'+p.name+'</h3><div class="sp">'+specsFn(p).map(s=>'<span>'+s+'</span>').join('')+'</div><div class="pr">'+(p.price||0).toLocaleString('fr-MA')+' <small>درهم</small></div><div class="act"><a class="wa" href="'+wa('سلام، مهتم بـ '+p.name+' — واش متوفر؟')+'" target="_blank" rel="noopener">واتساب</a><button class="det" data-cat="'+gridId+'" data-i="'+idx+'">تفاصيل</button></div></div></article>';
     }).join('');
   }
+  renderChips();
   draw();
+  return { refresh(){ renderChips(); draw(); } };
 }
-catalog(phones,'phoneGrid','phoneSearch','phoneChips',p=>[p.storage,p.ram&&p.ram+' RAM',p.color,p.battery&&'بطارية '+p.battery].filter(Boolean),'📱');
-catalog(computers,'pcGrid','pcSearch','pcChips',p=>[p.cpu,p.ram&&p.ram+' RAM',p.disk,p.screen].filter(Boolean),'💻');
+const phoneCatalog = catalog(phones,'phoneGrid','phoneSearch','phoneChips',p=>[p.storage,p.ram&&p.ram+' RAM',p.color,p.battery&&'بطارية '+p.battery].filter(Boolean),'📱');
+const itemCatalog = catalog(computers,'pcGrid','pcSearch','pcChips',p=>[p.category].filter(Boolean),'🔌');
 
 (function(){
   const cats=[]; services.forEach(s=>{ if(!cats.includes(s.cat))cats.push(s.cat); });
@@ -378,7 +376,7 @@ function openModal(p,isPhone){
   const img=p.image?'<img src="'+p.image+'" alt="'+p.name+'">':emoji;
   const rows = isPhone
     ? [['الماركة',p.brand],['الحالة',p.condition],['التخزين',p.storage],['الرام',p.ram],['البطارية',p.battery],['اللون',p.color],['الضمان',p.warranty]]
-    : [['الماركة',p.brand],['الحالة',p.condition],['المعالج',p.cpu],['الرام',p.ram],['الهارد',p.disk],['الشاشة',p.screen],['اللون',p.color],['الضمان',p.warranty]];
+    : [['التصنيف',p.category||p.brand],['الحالة',p.condition]];
   const st=rows.filter(r=>r[1]).map(r=>'<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>').join('');
   const feats=(p.features||[]).map(f=>'<li>'+f+'</li>').join('');
   const accs=(p.accessories||[]).map(a=>'<li>'+a+'</li>').join('');
@@ -389,6 +387,70 @@ function openModal(p,isPhone){
 document.getElementById('mClose').addEventListener('click',()=>{ modal.classList.remove('open'); document.body.style.overflow=''; });
 modal.addEventListener('click',e=>{ if(e.target===modal){ modal.classList.remove('open'); document.body.style.overflow=''; } });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ modal.classList.remove('open'); document.body.style.overflow=''; } });
+</script>
+
+<!-- ربط Firebase: كيقرا الهواتف والحاجات اللي مزيدة من تطبيق Androsaid وكيعرضهم هنا مباشرة -->
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script>
+(function(){
+  const firebaseConfig = {
+    apiKey: "AIzaSyA4eB0FE3HhJdLmezt0D0b0Vld2IrpqmAE",
+    authDomain: "logisaid-f2eac.firebaseapp.com",
+    projectId: "logisaid-f2eac",
+    storageBucket: "logisaid-f2eac.firebasestorage.app",
+    messagingSenderId: "781148201815",
+    appId: "1:781148201815:web:32f37365a5bac8a61b5412"
+  };
+  try{
+    firebase.initializeApp(firebaseConfig);
+  }catch(e){ console.error('Firebase init failed', e); return; }
+  const db = firebase.firestore();
+
+  db.collection('catalog_phones').onSnapshot(function(snap){
+    const items = snap.docs.map(function(doc){
+      const d = doc.data();
+      return {
+        name: d.fullName || [d.brand,d.model].filter(Boolean).join(' ') || 'هاتف',
+        brand: d.brand || '',
+        condition: '',
+        price: d.listingPrice || 0,
+        storage: d.storageGb ? d.storageGb+'GB' : '',
+        ram: d.ramGb ? d.ramGb+'GB' : '',
+        battery: d.batteryHealth ? d.batteryHealth+'%' : '',
+        color: '',
+        warranty: '',
+        available: true,
+        image: d.photoUrl || '',
+        features: [],
+        accessories: []
+      };
+    });
+    phones.length = 0;
+    Array.prototype.push.apply(phones, items);
+    if(typeof phoneCatalog !== 'undefined') phoneCatalog.refresh();
+  }, function(err){ console.error('catalog_phones sync error', err); });
+
+  db.collection('catalog_items').onSnapshot(function(snap){
+    const items = snap.docs.map(function(doc){
+      const d = doc.data();
+      return {
+        name: d.name || 'حاجة',
+        brand: d.category || '',
+        category: d.category || '',
+        condition: '',
+        price: d.listingPrice || 0,
+        available: true,
+        image: d.photoUrl || '',
+        features: [],
+        accessories: []
+      };
+    });
+    computers.length = 0;
+    Array.prototype.push.apply(computers, items);
+    if(typeof itemCatalog !== 'undefined') itemCatalog.refresh();
+  }, function(err){ console.error('catalog_items sync error', err); });
+})();
 </script>
 </body>
 </html>
