@@ -253,8 +253,8 @@
   .home-card .hgo .icon{ width:13px; height:13px; }
   .home-card:hover .hgo{ filter:brightness(1.08); }
   .home-card:hover .hgo .icon{ transform:translateX(-3px); }
-  .home-card .hc-photo{ position:relative; z-index:1; flex:0 0 40%; align-self:stretch; border-radius:18px; overflow:hidden; box-shadow:0 14px 30px -16px rgba(16,32,30,.25); }
-  .home-card .hc-photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease; }
+  .home-card .hc-photo{ position:relative; z-index:1; flex:0 0 42%; align-self:stretch; border-radius:18px; overflow:hidden; background:rgba(255,255,255,.55); display:flex; align-items:center; justify-content:center; box-shadow:0 14px 30px -16px rgba(16,32,30,.2); }
+  .home-card .hc-photo img{ width:100%; height:100%; object-fit:contain; display:block; transition:transform .3s ease; }
   .home-card:hover .hc-photo img{ transform:scale(1.06); }
   @media (max-width:900px){ #homeCards{ grid-template-columns:repeat(2,1fr) !important; } .home-card{ min-height:170px; } }
   @media (max-width:560px){ #homeCards{ grid-template-columns:1fr !important; gap:14px; } .home-card{ min-height:130px; padding:16px; } .home-card .hc-photo{ flex-basis:36%; } .home-card .ht{ font-size:.96rem; } .home-card .hd{ display:none; } }
