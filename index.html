@@ -370,7 +370,7 @@
   </section>
 
   <section class="panel" id="tab-computers">
-    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-box"></use></svg> حاجات أخرى</h2><p>إكسسوارات، قطع غيار، وحاجات متنوعة كتتزاد أوتوماتيكياً.</p></div>
+    <div class="panel-head reveal"><h2 style="display:flex;align-items:center;gap:10px"><svg class="icon" style="width:.85em;height:.85em;color:var(--brass-deep)"><use href="#i-box"></use></svg> حاجات أخرى</h2><p>أي حاجة كنبيعها كتبان هنا أوتوماتيكياً — حواسيب، إكسسوارات، ولا شي حاجة أخرى.</p></div>
     <div class="toolbar">
       <div class="search"><svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="pcSearch" placeholder="قلب على حاجة…" aria-label="بحث"></div>
       <div class="chips" id="pcChips"></div>
@@ -476,7 +476,7 @@ document.getElementById('heroPic').src = HOME_IMG.phones;
 
 document.getElementById('homeCards').innerHTML = [
   {img:HOME_IMG.phones,t:'التيليفونات',d:'جديدة ومستعملة، مجرّبة',id:'phones'},
-  {img:HOME_IMG.computers,t:'حاجات أخرى',d:'إكسسوارات ومتنوعات',id:'computers'},
+  {img:HOME_IMG.computers,t:'حاجات أخرى',d:'أي حاجة كنبيعها',id:'computers'},
   {img:HOME_IMG.services,t:'الخدمات',d:'إصلاح واسترجاع وأكثر',id:'services'}
 ].map(c=>'<button class="home-card" onclick="showTab(\''+c.id+'\')"><div class="hpic"><img src="'+c.img+'" alt="'+c.t+'" loading="lazy"></div><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">اكتشف <svg class="icon"><use href="#i-arrow-left"></use></svg></span></button>').join('');
 
