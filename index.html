@@ -803,9 +803,10 @@ document.getElementById('heroPic').src = HOME_IMG.phones;
 
 const PEXELS_IMG = id => 'https://images.pexels.com/photos/'+id+'/pexels-photo-'+id+'.jpeg?auto=compress&cs=tinysrgb&w=480';
 document.getElementById('homeCards').innerHTML = [
+  /* نفس ترتيب وتصميم الصورة المرجعية: RTL = الهاتف يمين، الألعاب وسط، الحواسيب يسار */
   {cls:'c1',icon:'i-phone',img:HOME_IMG.phones,t:'الهواتف الذكية',d:'أحدث الهواتف بأفضل الأسعار',id:'phones'},
-  {cls:'c2',icon:'i-laptop',img:HOME_IMG.computers,t:'حواسيب',d:'أداء أعلى لمستقبل أفضل',id:'computers'},
   {cls:'c3',icon:'i-gamepad',img:PEXELS_IMG(3945657),t:'الألعاب',d:'عِش تجربة لعب لا تُنسى',id:'games'},
+  {cls:'c2',icon:'i-laptop',img:HOME_IMG.computers,t:'حواسيب',d:'أداء أعلى لمستقبل أفضل',id:'computers'},
   {cls:'c4',icon:'i-watch',img:PEXELS_IMG(6493443),t:'درونات وساعات ذكية ونظارات',d:'اكتشف العالم من زاوية جديدة',id:'gadgets'},
   {cls:'c5',icon:'i-plug',img:PEXELS_IMG(914915),t:'إكسسوارات الهواتف',d:'مستلزمات تحمي وتكمل تجربتك',id:'accessories'},
   {cls:'c6',icon:'i-mouse',img:PEXELS_IMG(9161032),t:'إكسسوارات الحاسوب',d:'مزيد من الراحة والإنتاجية',id:'pc-accessories'},
