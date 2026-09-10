@@ -898,7 +898,7 @@ document.getElementById('homeCards').innerHTML = [
   {cls:'c8',icon:'i-camera',img:'images/home-cameras.jpg',t:'كاميرات المراقبة',d:'أمان كامل لبيتك ومكتبك',id:'cameras'},
   {cls:'c9',icon:'i-tool',img:'images/home-services.jpg',t:'الخدمات التقنية',d:'صيانة، تركيب، ودعم احترافي',id:'services'},
   {cls:'c10',icon:'i-wifi',img:'images/home-network.jpg',t:'روترات وشبكات و IPTV',d:'شبكة قوية وتغطية كاملة لبيتك',id:'network'}
-].map(c=>'<button class="home-card '+c.cls+'" onclick="showTab(\''+c.id+'\')"><div class="hc-badge"><svg class="icon"><use href="#'+c.icon+'"></use></svg></div><div class="hc-text"><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">تصفح الآن <svg class="icon"><use href="#i-arrow-left"></use></svg></span></div><div class="hc-photo"><img src="'+c.img+'" alt="'+c.t+'" loading="lazy"></div></button>').join('');
+].map(c=>'<button class="home-card '+c.cls+'" onclick="showTab(\''+c.id+'\')"><div class="hc-text"><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">تصفح الآن <svg class="icon"><use href="#i-arrow-left"></use></svg></span></div><div class="hc-photo"><img src="'+c.img+'" alt="'+c.t+'" loading="lazy"></div></button>').join('');
 
 function catalog(list, gridId, searchId, chipsId, specsFn, emoji, catFilter){
   let brand="", q="";
