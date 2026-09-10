@@ -617,6 +617,8 @@
 </header>
 
 <div class="tabs">
+  <button class="tabs-arrow tabs-arrow-start" type="button" aria-label="السابق" onclick="scrollTabsBar(1)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+  <button class="tabs-arrow tabs-arrow-end" type="button" aria-label="التالي" onclick="scrollTabsBar(-1)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button>
   <div class="tabs-in" id="tabsBar">
     <button class="tab active" data-tab="home"><svg class="icon"><use href="#i-home"></use></svg>الرئيسية</button>
     <button class="tab" data-tab="phones"><svg class="icon"><use href="#i-phone"></use></svg>التيليفونات</button>
@@ -1047,6 +1049,38 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ modal.classList.r
   }, function(err){ console.error('catalog_items sync error', err); });
 })();
 </script>
+<script>
+(function(){
+  function initTabsScroll(){
+    var bar = document.getElementById('tabsBar');
+    if(!bar) return;
+    var wrap = bar.parentElement;
+    var startBtn = wrap.querySelector('.tabs-arrow-start');
+    var endBtn = wrap.querySelector('.tabs-arrow-end');
+    function update(){
+      var max = bar.scrollWidth - bar.clientWidth;
+      if(max <= 2){
+        if(startBtn) startBtn.classList.add('is-hidden');
+        if(endBtn) endBtn.classList.add('is-hidden');
+        return;
+      }
+      if(startBtn) startBtn.classList.toggle('is-hidden', bar.scrollLeft >= -2);
+      if(endBtn) endBtn.classList.toggle('is-hidden', bar.scrollLeft <= -(max - 2));
+    }
+    window.scrollTabsBar = function(dir){
+      bar.scrollBy({ left: dir * bar.clientWidth * 0.6, behavior:'smooth' });
+    };
+    bar.addEventListener('scroll', update, { passive:true });
+    window.addEventListener('resize', update);
+    update();
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initTabsScroll);
+  } else {
+    initTabsScroll();
+  }
+})();
+</script>
 </body>
 </html>
 
@@ -1343,6 +1377,30 @@ header.top{
   .home-card .hc-photo{width:55%!important;height:105%!important}
   #tab-home .trust-grid{grid-template-columns:repeat(2,1fr)!important}
   #tab-home .trust-item{border-bottom:1px solid rgba(17,27,39,.08)}
+}
+
+/* Category tabs bar — scroll affordance so hidden buttons are never "invisible" on the side */
+.tabs{ position:relative; }
+.tabs-in{ scroll-behavior:smooth; }
+.tabs::before, .tabs::after{
+  content:""; position:absolute; top:0; bottom:1px; width:40px; z-index:4; pointer-events:none; transition:opacity .15s;
+}
+.tabs::before{ right:0; background:linear-gradient(to left, rgba(247,245,239,.98), rgba(247,245,239,0)); }
+.tabs::after{ left:0; background:linear-gradient(to right, rgba(247,245,239,.98), rgba(247,245,239,0)); }
+.tabs-arrow{
+  position:absolute; top:50%; transform:translateY(-50%); width:30px; height:30px; border-radius:50%;
+  border:1px solid var(--line); background:#fff; box-shadow:0 4px 14px -6px rgba(16,42,39,.4);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:5; color:var(--teal);
+  padding:0; opacity:1; visibility:visible; transition:opacity .15s, visibility .15s;
+}
+.tabs-arrow svg{ width:16px; height:16px; }
+.tabs-arrow:hover{ border-color:var(--brass); }
+.tabs-arrow-start{ right:4px; }
+.tabs-arrow-end{ left:4px; }
+.tabs-arrow.is-hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+@media(max-width:640px){
+  .tabs-arrow{ display:none; }
+  .tabs::before, .tabs::after{ width:22px; }
 }
 </style>
 
