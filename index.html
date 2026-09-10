@@ -1344,5 +1344,21 @@ header.top{
   #tab-home .trust-grid{grid-template-columns:repeat(2,1fr)!important}
   #tab-home .trust-item{border-bottom:1px solid rgba(17,27,39,.08)}
 }
+
+/* Category tabs bar: wrap onto extra lines instead of hiding items off-screen */
+.tabs-in{
+  flex-wrap:wrap!important;
+  overflow-x:visible!important;
+  overflow:visible!important;
+  row-gap:8px!important;
+}
+.tabs{ overflow:visible!important; }
+.tab{ flex-shrink:0!important; }
+@media(max-width:1100px){
+  .tabs-in{ flex-wrap:wrap!important; overflow-x:visible!important; justify-content:center!important; }
+}
+@media(max-width:640px){
+  .tabs-in{ justify-content:center!important; }
+}
 </style>
 
