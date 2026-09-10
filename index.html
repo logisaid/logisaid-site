@@ -889,15 +889,15 @@ if(siteSearch){
 document.getElementById('homeCards').innerHTML = [
   /* Order intentionally matches the supplied reference image in RTL: right -> left */
   {cls:'c1',icon:'i-phone',img:'images/home-phones.jpg',t:'الهواتف الذكية',d:'أحدث الهواتف بأفضل الأسعار',id:'phones'},
-  {cls:'c3',icon:'i-gamepad',img:'images/home-games.jpg',t:'الألعاب',d:'عِش تجربة لعب لا تُنسى',id:'games'},
+  {cls:'c5',icon:'i-plug',img:'images/home-accessories.jpg',t:'إكسسوارات الهواتف',d:'مستلزمات تحمي وتكمل تجربتك',id:'accessories'},
+  {cls:'c9',icon:'i-tool',img:'images/home-services.jpg',t:'الخدمات التقنية',d:'صيانة، تركيب، ودعم احترافي',id:'services'},
   {cls:'c2',icon:'i-laptop',img:'images/home-computers.jpg',t:'حواسيب',d:'أداء أعلى لمستقبل أفضل',id:'computers'},
   {cls:'c6',icon:'i-mouse',img:'images/home-pc-accessories.jpg',t:'إكسسوارات الحاسوب',d:'مزيد من الراحة والإنتاجية',id:'pc-accessories'},
-  {cls:'c5',icon:'i-plug',img:'images/home-accessories.jpg',t:'إكسسوارات الهواتف',d:'مستلزمات تحمي وتكمل تجربتك',id:'accessories'},
-  {cls:'c4',icon:'i-watch',img:'images/home-gadgets.jpg',t:'درونات وساعات ذكية ونظارات',d:'اكتشف العالم من زاوية جديدة',id:'gadgets'},
-  {cls:'c7',icon:'i-box',img:'images/home-software.jpg',t:'برامج وسوفتوير',d:'حلول رقمية لحياة أسهل',id:'software'},
   {cls:'c8',icon:'i-camera',img:'images/home-cameras.jpg',t:'كاميرات المراقبة',d:'أمان كامل لبيتك ومكتبك',id:'cameras'},
-  {cls:'c9',icon:'i-tool',img:'images/home-services.jpg',t:'الخدمات التقنية',d:'صيانة، تركيب، ودعم احترافي',id:'services'},
-  {cls:'c10',icon:'i-wifi',img:'images/home-network.jpg',t:'روترات وشبكات و IPTV',d:'شبكة قوية وتغطية كاملة لبيتك',id:'network'}
+  {cls:'c10',icon:'i-wifi',img:'images/home-network.jpg',t:'روترات وشبكات و IPTV',d:'شبكة قوية وتغطية كاملة لبيتك',id:'network'},
+  {cls:'c7',icon:'i-box',img:'images/home-software.jpg',t:'برامج وسوفتوير',d:'حلول رقمية لحياة أسهل',id:'software'},
+  {cls:'c4',icon:'i-watch',img:'images/home-gadgets.jpg',t:'درونات وساعات ذكية ونظارات',d:'اكتشف العالم من زاوية جديدة',id:'gadgets'},
+  {cls:'c3',icon:'i-gamepad',img:'images/home-games.jpg',t:'الألعاب',d:'عِش تجربة لعب لا تُنسى',id:'games'}
 ].map(c=>'<button class="home-card '+c.cls+'" onclick="showTab(\''+c.id+'\')"><div class="hc-text"><div class="ht">'+c.t+'</div><div class="hd">'+c.d+'</div><span class="hgo">تصفح الآن <svg class="icon"><use href="#i-arrow-left"></use></svg></span></div><div class="hc-photo"><img src="'+c.img+'" alt="'+c.t+'" loading="lazy"></div></button>').join('');
 
 function catalog(list, gridId, searchId, chipsId, specsFn, emoji, catFilter){
