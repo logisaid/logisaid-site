@@ -1469,5 +1469,63 @@ header.top{
   }
   .home-card .hc-photo img{ mask-image:none!important; -webkit-mask-image:none!important; }
 }
-</style>
 
+/* =========================================================
+   MOBILE-ONLY FIXES (phones 320–430px)
+   Scoped entirely behind max-width media queries.
+   Desktop/tablet layout, spacing, colors and structure
+   are untouched above these breakpoints.
+   ========================================================= */
+@media (max-width:480px){
+  html,body{ overflow-x:hidden!important; max-width:100vw!important; }
+  .wrap{ padding-inline:12px!important; }
+
+  /* Stable 2-column product grid on every small phone
+     (root cause: auto-fill minmax(168px,1fr) was flipping
+     between 1 and 2 columns inside this exact width range) */
+  .grid-p{ grid-template-columns:repeat(2,minmax(0,1fr))!important; gap:10px!important; }
+  .pc{ border-radius:16px!important; }
+  .pc .img{ font-size:2rem!important; }
+  .pc .b{ padding:10px 11px 12px!important; }
+  .pc h3{ font-size:.82rem!important; line-height:1.32!important; margin-bottom:5px!important;
+          display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .pc .sp{ gap:3px!important; margin-bottom:8px!important; }
+  .pc .sp span{ font-size:.6rem!important; padding:2px 6px!important; }
+  .pc .pr{ font-size:.95rem!important; margin:auto 0 8px!important; }
+  .pc .pr small{ font-size:.6rem!important; }
+  .pc .act{ grid-template-columns:1fr!important; gap:6px!important; }
+  .pc .act a,.pc .act button{ padding:9px 6px!important; font-size:.76rem!important; border-radius:9px!important; }
+
+  /* Category nav: fit small screens without overflow */
+  .tabs-in{ gap:5px!important; padding:6px!important; }
+  .tab{ padding:7px 11px!important; font-size:.72rem!important; }
+  .tab .icon{ width:14px!important; height:14px!important; }
+  .chip{ padding:7px 12px!important; font-size:.8rem!important; }
+
+  /* Toolbar / search */
+  .toolbar{ padding:10px!important; margin:14px 0 16px!important; }
+  .search input{ padding:11px 40px 11px 12px!important; font-size:.92rem!important; }
+
+  /* Quick-view product modal */
+  .md{ border-radius:18px!important; }
+  .md-b{ padding:18px!important; }
+  .md-title{ font-size:1.25rem!important; }
+  .md-act{ gap:7px!important; }
+  .md-act a,.md-act button{ font-size:.85rem!important; padding:10px!important; }
+
+  /* Floating WhatsApp button: smaller and clear of everything else,
+     with room reserved at the end of the page so it never sits on top of content */
+  .fab-wa{ width:50px!important; height:50px!important; bottom:16px!important; right:14px!important; z-index:60!important; }
+  .fab-wa svg{ width:24px!important; height:24px!important; }
+  footer{ padding-bottom:110px!important; }
+  .panel{ padding-bottom:20px!important; }
+}
+
+@media (max-width:360px){
+  .grid-p{ gap:8px!important; }
+  .pc h3{ font-size:.78rem!important; }
+  .pc .pr{ font-size:.88rem!important; }
+  .pc .act a,.pc .act button{ font-size:.72rem!important; padding:8px 5px!important; }
+  .tab{ padding:6px 9px!important; font-size:.68rem!important; }
+}
+</style>
